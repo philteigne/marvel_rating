@@ -1,5 +1,7 @@
 import React from "react";
-import logo from '../logo.svg';
+
+
+import MovieDetails from "../components/MovieDetails";
 
 const Home = () => {
   return (
@@ -7,11 +9,7 @@ const Home = () => {
         <h1>
           Top Movie
         </h1>
-        <div>
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Movie Title</h2>
-          <p>Movie overview text but more like a paragraph it'll be pretty long</p>
-        </div>
+        <MovieDetails />
       </div>
   );
 }
