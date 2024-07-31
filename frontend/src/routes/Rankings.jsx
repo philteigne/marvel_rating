@@ -1,6 +1,6 @@
 import React from "react";
 
-const AllRankings = () => {
+const Rankings = () => {
   return(
     <React.Fragment>
       <div>
@@ -28,4 +28,4 @@ const AllRankings = () => {
   );
 }
 
-export default AllRankings;
+export default Rankings;
