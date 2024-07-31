@@ -1,19 +1,28 @@
 import React from "react";
+import { useContext } from "react";
 import MovieDetails from "../components/MovieDetails";
-
+import { applicationContext } from "../hooks/applicationContext";
 const Rate = () => {
+
+  const { state, dispatch } = useContext(applicationContext);
+  console.log("Rate", state)
+
   return(
     <React.Fragment>
       <div>
         <h1>Unrated</h1>
         <ul>
-          <li>Thor</li>
-          <li>Iron Man</li>
-          <li>Captain America</li>
+          {state.unratedMoviesList.map((movie) => {
+            return(
+              <li key={movie.id} onClick={() => dispatch({type: "SET_MOVIE_DETAILS", payload: movie})}>
+                <img src={movie.posterLink} />
+              </li>
+            )
+          })}
         </ul>
       </div>
       <div>
-        <MovieDetails />
+        {state.movieDetails.title && <MovieDetails />}
         <div>
           <form>
             <label>Fight</label>
