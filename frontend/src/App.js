@@ -1,7 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 
+import Home from './routes/Home';
+import AllRankings from './routes/AllRankings';
+
 function App() {
+
+  const state = {
+    currentView: "AllRankings",
+  }
 
   return (
     <div className="App">
@@ -13,16 +19,8 @@ function App() {
           <li>User Settings</li>
         </ul>
       </nav>
-      <div>
-        <h1>
-          Top Movie
-        </h1>
-        <div>
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Movie Title</h2>
-          <p>Movie overview text but more like a paragraph it'll be pretty long</p>
-        </div>
-      </div>
+      {state.currentView === "Home" && <Home />}
+      {state.currentView === "AllRankings" && <AllRankings />}
     </div>
   );
 }
