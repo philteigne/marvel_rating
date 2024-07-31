@@ -11,11 +11,16 @@ const INITIAL_STATE = {
 
 // Dispatch Actions
 export const ACTIONS = {
-  
+  SET_ROUTE: "SET_ROUTE"
 }
 
 export function reducer(state, action) {
   switch (action.type) {
+    case ACTIONS.SET_ROUTE:
+      return {
+        ...state,
+        appView: action.payload,
+      }
     // case ACTIONS.GET_INGREDIENTS_USER:
     //   return {
     //     ...state,
