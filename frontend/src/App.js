@@ -11,6 +11,7 @@ import { applicationContext } from './hooks/applicationContext';
 function App() {
 
   const { state, dispatch } = useApplicationData();
+  console.log(state)
 
   return (
     <applicationContext.Provider value={{state, dispatch}}>

@@ -13,7 +13,7 @@ const Home = () => {
         <h1>
           Top Movie
         </h1>
-        {state.movieDetails.title && <MovieDetails />}
+        {state.carouselMovies.highest_rated_movie && <MovieDetails />}
       </div>
   );
 }

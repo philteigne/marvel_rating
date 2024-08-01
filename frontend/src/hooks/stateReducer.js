@@ -1,44 +1,28 @@
 import { useReducer, useEffect } from 'react';
 
-export const API_CALL_URL = "http://localhost:8080/api/"
+export const API_CALL_URL = "https://ratings.svidnet.com/api/"
 
 // Basic App State
 const INITIAL_STATE = {
-  userID: 1,
+  userID: 3,
 
   // App State
   appView: "Home", // Home, Rankings, MyRatings, User
+  carouselMovies: {},
 
   // Ranking State
 
   // MyRatings State
-  unratedMoviesList: [
-    {
-      id: 1,
-      title: "Thor",
-      posterLink: "https://image.tmdb.org/t/p/w500/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
-      overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent placerat, metus ornare hendrerit mattis, metus nisl mattis nisl, interdum blandit ligula velit ut dui."
-    },
-    {
-      id: 2,
-      title: "Shang-Chi",
-      posterLink: "https://image.tmdb.org/t/p/w500/1BIoJGKbXjdFDAqUEiA2VHqkK1Z.jpg",
-      overview: "Nullam ultricies, ipsum in luctus scelerisque, nibh nibh consequat metus, quis semper urna elit quis libero."
-    },
-    {
-      id: 3,
-      title: "Black Panther Wakanda Forever",
-      posterLink: "https://image.tmdb.org/t/p/w500/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
-      overview: "Praesent risus metus, tempor non dictum non, convallis non justo. Aliquam massa ligula, tristique ac ornare ac, dictum non tortor."
-    }
-  ],
-  movieDetails: {},
+  unratedMoviesList: [],
+  selectedMovieRate: {},
 }
 
 // Dispatch Actions
 export const ACTIONS = {
   SET_ROUTE: "SET_ROUTE",
-  SET_MOVIE_DETAILS: "SET_MOVIE_DETAILS",
+  SET_SELECTED_MOVIE_RATE: "SET_SELECTED_MOVIE_RATE",
+  SET_CAROUSEL: "SET_CAROUSEL",
+  SET_UNRATED_MOVIES: "SET_UNRATED_MOVIES",
 }
 
 export function reducer(state, action) {
@@ -48,12 +32,21 @@ export function reducer(state, action) {
         ...state,
         appView: action.payload,
       }
-    case ACTIONS.SET_MOVIE_DETAILS:
+    case ACTIONS.SET_SELECTED_MOVIE_RATE:
       return {
         ...state,
-        movieDetails: action.payload,
+        selectedMovieRate: action.payload,
       }
-
+    case ACTIONS.SET_CAROUSEL:
+      return {
+        ...state,
+        carouselMovies: action.payload,
+      }
+    case ACTIONS.SET_UNRATED_MOVIES:
+      return {
+        ...state,
+        unratedMoviesList: action.payload
+      }
       
     default:
       throw new Error(
@@ -66,7 +59,30 @@ const useApplicationData = () => {
 
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
+  // HomePage Carousel
+  useEffect(() => {
+    fetch(`${API_CALL_URL}top`, {
+      headers: {
+        // 'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_CAROUSEL, payload: data }))
+      .catch(err => console.log(err.message))
+  }, [])
   
+
+  useEffect(() => {
+    fetch(`${API_CALL_URL}movies/no-ratings?user_id=${state.userID}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then((res) => res.json())
+    .then((data) => dispatch({ type: ACTIONS.SET_UNRATED_MOVIES, payload: data}))
+  }, [state.userID])
+
   // AI CHATBOT
   // useEffect(() => {
   //   if (state.chatQuery) {
