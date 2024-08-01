@@ -2,10 +2,10 @@ import React from "react";
 import { useContext } from "react";
 import MovieDetails from "../components/MovieDetails";
 import { applicationContext } from "../hooks/applicationContext";
-const Rate = () => {
+const MyRatings = () => {
 
   const { state, dispatch } = useContext(applicationContext);
-  console.log("Rate", state)
+  console.log("MyRatings", state)
 
   return(
     <React.Fragment>
@@ -52,4 +52,4 @@ const Rate = () => {
   );
 }
 
-export default Rate;
+export default MyRatings;

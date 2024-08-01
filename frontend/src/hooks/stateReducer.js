@@ -7,11 +7,11 @@ const INITIAL_STATE = {
   userID: 1,
 
   // App State
-  appView: "Home", // Home, Rankings, Rate, User
+  appView: "Home", // Home, Rankings, MyRatings, User
 
   // Ranking State
 
-  // Rate State
+  // MyRatings State
   unratedMoviesList: [
     {
       id: 1,
