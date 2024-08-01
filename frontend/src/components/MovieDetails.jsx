@@ -7,13 +7,13 @@ import { applicationContext } from "../hooks/applicationContext";
 const MovieDetails = () => {
 
   const { state, dispatch } = useContext(applicationContext);
-  console.log("Movie details", state)
+  const highestMovie = state.carouselMovies.highest_rated_movie
 
   return(
     <div>
-      <img src={state.movieDetails.posterLink} alt={state.movieDetails.title} />
-      <h2>{state.movieDetails.title}</h2>
-      <p>{state.movieDetails.overview}</p>
+      <img src={highestMovie.poster_url} alt={highestMovie.title} />
+      <h2>{highestMovie.title}</h2>
+      <p>{highestMovie.overview}</p>
     </div>
   );
 }
