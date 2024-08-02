@@ -17,6 +17,9 @@ function App() {
   return (
     <applicationContext.Provider value={{state, dispatch}}>
       <div className="App">
+        <span className='background'></span>
+        <span className="dot bottom-left"></span>
+        <span className="dot top-right"></span>
         <nav>
           <a>LogoText</a>
           <ul className='nav-list'>
