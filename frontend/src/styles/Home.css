@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'DMSerifDisplay';
+  font-style: normal;
+  src: url('../assets/fonts/DMSerifDisplay-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Kanit';
+  font-weight: 400;
+  src: url('../assets/fonts/Kanit-Regular.ttf')
+}
+
+.movie-showcase {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+h1 {
+  font-family: 'DMSerifDisplay', serif;
+  font-size: 64pt;
+
+  margin: 20px;
+  text-align: center;
+}
+
+img {
+  height: 545px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+
+  margin-right: 50px
+}
+
+.movie-display {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movie-award {
+  font-family: 'DMSerifDisplay', serif;
+  font-size: 43.7pt;
+  margin: 10px 0 10px 0;
+}
+
+.movie-title {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 400;
+  font-size: 29pt;
+  margin: 10px 0 10px 0;
+}
+
+.movie-overview {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 400;
+  font-size: 12pt;
+  width: 464.5px;
+  margin: 10px 0 10px 0;
+}
