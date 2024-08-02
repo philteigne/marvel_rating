@@ -93,6 +93,7 @@ const useApplicationData = () => {
       headers: {
         // 'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`
         'Content-Type': 'application/json',
+        "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77" 
       }
     })
       .then((res) => res.json())
@@ -105,6 +106,7 @@ const useApplicationData = () => {
     fetch(`${API_CALL_URL}movies/no-ratings?user_id=${state.userID}`, {
       headers: {
         'Content-Type': 'application/json',
+        "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77"
       }
     })
     .then((res) => res.json())
@@ -116,6 +118,7 @@ const useApplicationData = () => {
     fetch(`${API_CALL_URL}categories`, {
       headers: {
         'Content-Type': 'application/json',
+        "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77"
       }
     })
     .then((res) => res.json())
@@ -132,6 +135,7 @@ const useApplicationData = () => {
     fetch(`${API_CALL_URL}sorted_movies${apiString}`, {
       headers: {
         'Content-Type': 'application/json',
+        "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77"
       }
     })
     .then((res) => res.json())
@@ -142,15 +146,19 @@ const useApplicationData = () => {
 
   // POST rateMovie
   useEffect(() => {
-    fetch(`${API_CALL_URL}ratings`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(state.rateMovie)
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    if (state.rateMovie.movieID) {
+      fetch(`${API_CALL_URL}ratings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77"
+        },
+        body: JSON.stringify(state.rateMovie)
+      })
+      .then(res => console.log(res))
+      .then(() => state.rateMovie = {})
+      .catch(err => console.log(err))
+    }
 
   }, [state.rateMovie]) 
 
