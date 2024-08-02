@@ -14,13 +14,15 @@ const MyRatings = () => {
       <div>
         <h1>Unrated</h1>
         <ul>
-          {state.unratedMoviesList.map((movie) => {
-            return(
-              <li key={movie.id} onClick={() => dispatch({type: "SET_SELECTED_MOVIE_RATE", payload: movie})}>
-                <img src={movie.poster_url} />
-              </li>
-            )
-          })}
+          {state.unratedMoviesList.length > 0 &&
+            state.unratedMoviesList.map((movie) => {
+              return(
+                <li key={movie.id} onClick={() => dispatch({type: "SET_SELECTED_MOVIE_RATE", payload: movie})}>
+                  <img src={movie.poster_url} />
+                </li>
+              )
+            })
+          }
         </ul>
       </div>
 
