@@ -1,0 +1,27 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin: 10px;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-list-item {
+  margin: 0 4px;
+  padding: 4px 9px;
+
+  font-family: 'Kanit', 'sans-serif';
+  font-size: 12pt;
+}
+
+.nav-list-item:hover {
+  cursor: pointer;
+  
+  background-color: rgba(0, 0, 0, 0.1); 
+
+}
