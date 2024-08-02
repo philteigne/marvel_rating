@@ -1,28 +1,34 @@
 import React from "react";
+import { useContext } from "react";
+import { applicationContext } from "../hooks/applicationContext";
 
 const Rankings = () => {
+
+  const { state, dispatch } = useContext(applicationContext);
+
   return(
     <React.Fragment>
       <div>
-        <button>Fight</button>
-        <button>Comedy</button>
-        <button>Wow</button>
-        <button>Future Storyline</button>
-        <button>Villain</button>
-        <button>Story</button>
-        <button>Total Rating</button>
+        {/* only display categories list if categoriesList is populated */}
+        {state.categoriesList.map((category) => {
+          return(
+            <button key={category.id} onClick={() => dispatch({ type: "SET_SELECTED_CATEGORY", payload: category.name })}>
+              {category.name}
+            </button>
+          )
+        })}
+        <button onClick={() => dispatch({ type: "SET_SELECTED_CATEGORY", payload: null })}>
+          Total Rating
+        </button>
       </div>
       <ul>
-        <li>
-          <h2>Thor</h2>
-          <p>2</p>
-          <p>3</p>
-          <p>4</p>
-          <p>6</p>
-          <p>1</p>
-          <p>3</p>
-          <p>4</p>
-        </li>
+        {state.rankedMoviesList.map((movie) => {
+          return(
+            <li key={movie.id}>
+              {movie.title}: {movie.average_rating}
+            </li>
+          )
+        })}
       </ul>
     </React.Fragment>
   );
