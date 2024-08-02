@@ -1,6 +1,8 @@
 import { useReducer, useEffect } from 'react';
 
 export const API_CALL_URL = "https://ratings.svidnet.com/api/"
+// const X_API_KEY = process.env()
+
 
 // Basic App State
 const INITIAL_STATE = {
@@ -93,7 +95,7 @@ const useApplicationData = () => {
       headers: {
         // 'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`
         'Content-Type': 'application/json',
-        "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77" 
+        "x-api-key": REACT_APP_X_API_KEY 
       }
     })
       .then((res) => res.json())
@@ -106,7 +108,7 @@ const useApplicationData = () => {
     fetch(`${API_CALL_URL}movies/no-ratings?user_id=${state.userID}`, {
       headers: {
         'Content-Type': 'application/json',
-        "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77"
+        "x-api-key": REACT_APP_X_API_KEY
       }
     })
     .then((res) => res.json())
@@ -118,7 +120,7 @@ const useApplicationData = () => {
     fetch(`${API_CALL_URL}categories`, {
       headers: {
         'Content-Type': 'application/json',
-        "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77"
+        "x-api-key": REACT_APP_X_API_KEY
       }
     })
     .then((res) => res.json())
@@ -135,7 +137,7 @@ const useApplicationData = () => {
     fetch(`${API_CALL_URL}sorted_movies${apiString}`, {
       headers: {
         'Content-Type': 'application/json',
-        "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77"
+        "x-api-key": REACT_APP_X_API_KEY
       }
     })
     .then((res) => res.json())
@@ -151,7 +153,7 @@ const useApplicationData = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          "x-api-key": "080ead7965681f99d5b06128370564c1ae345dc91daa141ed5d2168d69b463797e8caa5479f3b1d8743288f751e5dbcd2ae5714444ec0c2228a219baf6765c77"
+          "x-api-key": REACT_APP_X_API_KEY
         },
         body: JSON.stringify(state.rateMovie)
       })
