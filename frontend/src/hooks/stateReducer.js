@@ -11,6 +11,8 @@ const INITIAL_STATE = {
   carouselMovies: {},
 
   // Ranking State
+  rankedMoviesList: [],
+  selectedCategory: null,
 
   // MyRatings State
   unratedMoviesList: [],
@@ -27,6 +29,8 @@ export const ACTIONS = {
   SET_UNRATED_MOVIES: "SET_UNRATED_MOVIES",
   SET_CATEGORIES_LIST: "SET_CATEGORIES_LIST",
   SET_RATE_MOVIE: "SET_RATE_MOVIE",
+  SET_RANKED_MOVIES_LIST: "SET_RANKED_MOVIES_LIST",
+  SET_SELECTED_CATEGORY: "SET_SELECTED_CATEGORY",
 }
 
 export function reducer(state, action) {
@@ -60,6 +64,16 @@ export function reducer(state, action) {
       return {
         ...state,
         rateMovie: action.payload
+      }
+    case ACTIONS.SET_RANKED_MOVIES_LIST:
+      return {
+        ...state,
+        rankedMoviesList: action.payload
+      }
+    case ACTIONS.SET_SELECTED_CATEGORY:
+      return {
+        ...state,
+        selectedCategory: action.payload
       }
       
     default:
@@ -105,8 +119,26 @@ const useApplicationData = () => {
       }
     })
     .then((res) => res.json())
-    .then((data) => dispatch({ type: ACTIONS.SET_CATEGORIES_LIST, payload: data}))
+    .then((data) => dispatch({ type: ACTIONS.SET_CATEGORIES_LIST, payload: data }))
   }, [])
+  
+  // GET rankedMoviesList
+  useEffect(() => {
+    let apiString = ""
+    if (state.selectedCategory) {
+      apiString = `?category_name=${state.selectedCategory}`
+    }
+
+    fetch(`${API_CALL_URL}sorted_movies${apiString}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then((res) => res.json())
+    .then((data) => dispatch({ type: ACTIONS.SET_RANKED_MOVIES_LIST, payload: data }))
+
+  }, [state.selectedCategory, state.rateMovie])
+
 
   // POST rateMovie
   useEffect(() => {
