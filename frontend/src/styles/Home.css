@@ -17,14 +17,6 @@
   margin-top: 24px;
 }
 
-h1 {
-  font-family: 'DMSerifDisplay', serif;
-  font-size: 64pt;
-
-  margin: 20px;
-  text-align: center;
-}
-
 img {
   height: 545px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
