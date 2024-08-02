@@ -1,7 +1,7 @@
 import { useReducer, useEffect } from 'react';
 
 export const API_CALL_URL = "https://ratings.svidnet.com/api/"
-// const X_API_KEY = process.env()
+const REACT_APP_X_API_KEY = process.env.REACT_APP_X_API_KEY
 
 
 // Basic App State
