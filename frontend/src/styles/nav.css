@@ -1,9 +1,15 @@
+@font-face {
+  font-family: 'Kanit';
+  font-weight: 400;
+  src: url('../assets/fonts/Kanit-Regular.ttf')
+}
+
 nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  margin: 10px;
+  padding: 10px;
 }
 
 .nav-list {
@@ -16,6 +22,7 @@ nav {
   padding: 4px 9px;
 
   font-family: 'Kanit', 'sans-serif';
+  font-weight: 400;
   font-size: 12pt;
 }
 
@@ -23,5 +30,4 @@ nav {
   cursor: pointer;
   
   background-color: rgba(0, 0, 0, 0.1); 
-
 }
