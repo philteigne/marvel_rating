@@ -21,7 +21,7 @@ function App() {
         <span className="dot bottom-left"></span>
         <span className="dot top-right"></span>
         <nav>
-          <a>LogoText</a>
+          <a className='logo-text'>TasteBuds</a>
           <ul className='nav-list'>
             <li onClick={() => dispatch({type: "SET_ROUTE", payload: "Home"})} className='nav-list-item'>Home</li>
             <li onClick={() => dispatch({type: "SET_ROUTE", payload: "Rankings"})} className='nav-list-item'>Rankings</li>
