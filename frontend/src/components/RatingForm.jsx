@@ -40,25 +40,29 @@ const RatingForm = () => {
 
   return(
     <form onSubmit={handleSubmit}>
-      {state.categoriesList.map((category) => {
-        return (
-          <label key={category.id}>{category.name}
-            <input type="number" min="1" max="10" step="1" placeholder="0" onChange={(e) => { 
-              setMovieRating({
-                ...movieRating,
-                [category.id]: {
-                  id: category.id,
-                  rating: e.target.value
-                }
-              })
-            }}
-            ></input>
-          </label>
-        )
-      })}
-
-      <h3>Total: {ratingTotal}</h3>
-      <button type="submit" >Submit</button>
+      <div className="rating-form">
+        {state.categoriesList.map((category) => {
+          return (
+            <div className="rating-input-container">
+              <label key={category.id} className="rating-label">{category.name}</label>
+              <input type="number" min="1" max="10" step="1" placeholder="0" onChange={(e) => { 
+                setMovieRating({
+                  ...movieRating,
+                  [category.id]: {
+                    id: category.id,
+                    rating: e.target.value
+                  }
+                })
+              }}
+              className="rating-input"></input>
+            </div>
+          )
+        })}
+      </div>
+      <div className="rating-summary">
+        <h3>Total: {ratingTotal}</h3>
+        <button type="submit" >Submit</button>
+      </div>
     </form>
   );
 }
