@@ -1,15 +1,28 @@
 @font-face {
-  font-family: 'Kanit';
-  font-weight: 400;
-  src: url('../assets/fonts/Kanit-Regular.ttf')
+  font-family: 'Lato';
+  font-weight: 600;
+  src: url('../assets/fonts/Lato-Bold.ttf')
 }
 
 nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 
-  padding: 10px;
+  padding: 30px;
+
+  max-height: 44px;
+}
+
+nav:after {
+  content: '';
+  width: 55vw;
+  height: 1px;
+  background: black;
+  position: absolute;
+  bottom: -1px;
+  left: calc(45vw);
 }
 
 .nav-list {
@@ -21,8 +34,8 @@ nav {
   margin: 0 4px;
   padding: 4px 9px;
 
-  font-family: 'Kanit', 'sans-serif';
-  font-weight: 400;
+  font-family: 'Lato', 'sans-serif';
+  font-weight: 600;
   font-size: 12pt;
 }
 
