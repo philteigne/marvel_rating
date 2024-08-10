@@ -10,7 +10,7 @@ const Rankings = () => {
   const { state, dispatch } = useContext(applicationContext);
 
   return(
-    <React.Fragment>
+    <div className='ranking-container'>
       <div>
         <div className='header-controls'>
           <h1>Movie Rankings By Category</h1>
@@ -34,23 +34,23 @@ const Rankings = () => {
           </li>
         </ul>
       </div>
-      <ul className='movie-list'>
+      <ul className='movie-ranking-list'>
         {state.rankedMoviesList.length > 0 &&
           state.rankedMoviesList.map((movie, index) => {
             return(
-              <li key={movie.id} className='movie-item'>
+              <li key={movie.id} className='movie-ranking-item'>
                 <h2 className='movie-ranking'>{index + 1}.</h2>
-                <div className='movie-container'>
-                  <img src={movie.poster_url} className='movie-poster'></img>
-                  <p className='movie-title'>{movie.title}</p>
-                  <p className='movie-rating'>{state.selectedCategory || "Total"} Rating: {movie.average_rating}</p>
+                <div className='movie-ranking-container'>
+                  <img src={movie.poster_url} className='movie-ranking-poster'></img>
+                  <p className='movie-ranking-title'>{movie.title}</p>
+                  <p className='movie-ranking-rating'>{state.selectedCategory || "Total"} Rating: {movie.average_rating}</p>
                 </div>
               </li>
             )
           })
         }
       </ul>
-    </React.Fragment>
+    </div>
   );
 }
 
