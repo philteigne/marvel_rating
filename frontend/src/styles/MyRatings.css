@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "DMSerifDisplay";
+  font-style: normal;
+  src: url('../assets/fonts/DMSerifDisplay-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Kanit';
+  font-weight: 400;
+  src: url('../assets/fonts/Kanit-Regular.ttf');
+}
+@font-face {
+  font-family: 'Kanit';
+  font-weight: 300;
+  src: url('../assets/fonts/Kanit-Light.ttf');
+}
+
+.unrated-container {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 44px);
+}
+
+.unrated-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin-bottom: 50px;
+  width: 96%;
+  margin-left: 2%;
+  margin-bottom: 3%;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
+.unrated-poster {
+  height: 250px;
+  margin: 10px;
+  margin-left: auto;
+}
+
+.unrated-focus {
+  display: flex;
+  justify-content: center;
+}
+
+.unrated-title {
+  font-family: "Kanit";
+  font-weight: 400;
+  font-size: 20pt;
+}
+
+.unrated-overview {
+  font-family: 'Kanit';
+  font-weight: 300;
+  font-size: 12pt;
+
+  width: 400px;
+}
+
+.unrated-poster-focus {
+  height: 400px;
+  margin: 5px;
+}
+
+.rating-form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+}
+
+.rating-summary {
+  display: flex;
+
+}
+

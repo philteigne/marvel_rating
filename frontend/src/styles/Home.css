@@ -5,9 +5,15 @@
 }
 
 @font-face {
-  font-family: 'Kanit';
+  font-family: 'Lato';
   font-weight: 400;
-  src: url('../assets/fonts/Kanit-Regular.ttf')
+  src: url('../assets/fonts/Lato-Regular.ttf')
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 600;
+  src: url('../assets/fonts/Lato-Bold.ttf')
 }
 
 .movie-showcase {
@@ -17,8 +23,9 @@
   margin-top: 24px;
 }
 
-img {
-  height: 545px;
+.movie-poster {
+  max-height: 28vw;
+  min-height: 350px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 
   margin-right: 50px
@@ -27,31 +34,34 @@ img {
 .movie-display {
   display: flex;
   justify-content: center;
+  margin-top: 3%;
 }
 
 .movie-description {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
+  max-width: 24vw;
+  margin-top: 2vw;
 }
 
 .movie-award {
   font-family: 'DMSerifDisplay', serif;
-  font-size: 43.7pt;
+  font-size: 28pt;
   margin: 10px 0 10px 0;
 }
 
 .movie-title {
-  font-family: 'Kanit', sans-serif;
-  font-weight: 400;
-  font-size: 29pt;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 16pt;
   margin: 10px 0 10px 0;
 }
 
 .movie-overview {
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 12pt;
-  width: 464.5px;
+  width: 100%;
   margin: 10px 0 10px 0;
 }

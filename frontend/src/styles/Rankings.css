@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'Kanit';
+  font-family: 'Lato';
   font-weight: 400;
-  src: url('../assets/fonts/Kanit-Regular.ttf');
+  src: url('../assets/fonts/Lato-Regular.ttf');
 }
 
 @font-face {
@@ -10,11 +10,14 @@
   src: url('../assets/fonts/DMSerifDisplay-Regular.ttf');
 }
 
+.ranking-container {
+  margin: 50px;
+}
+
 .header-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 50px
 }
 
 .category-list {
@@ -23,7 +26,7 @@
 }
 
 .category-item {
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 16pt;
 
@@ -37,20 +40,20 @@
   background-color: rgba(0, 0, 0, 0.1); 
 }
 
-.movie-list {
+.movie-ranking-list {
   display: flex;
   flex-wrap: wrap;
 
-  margin-left: 70px
+  margin-left: 20px
 }
 
-.movie-item {
+.movie-ranking-item {
   margin: 50px;
 
   display: flex;
 }
 
-.movie-container {
+.movie-ranking-container {
   width: 200px;
 }
 
@@ -62,12 +65,12 @@
   max-width: 20px;
 }
 
-.movie-poster {
+.movie-ranking-poster {
   height: 190px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-.movie-title {
+.movie-ranking-title {
   font-family: 'DMSerifDisplay', serif;
   font-size: 12pt;
 
@@ -75,8 +78,8 @@
   text-wrap: nowrap;
 }
 
-.movie-rating {
-  font-family: 'Kanit', sans-serif;
+.movie-ranking-rating {
+  font-family: 'Lato', sans-serif;
   font-size: 12pt;
   font-weight: 400;
 }
