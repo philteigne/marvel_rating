@@ -1,3 +1,5 @@
+import '../styles/MyRatings.css'
+
 import React from "react";
 import { useContext, useState } from "react";
 
@@ -11,13 +13,13 @@ const MovieRate = () => {
 
   return(
     <React.Fragment>
-      <div>
-        <img src={state.selectedMovieRate.poster_url} alt={state.selectedMovieRate.title} />
-        <h2>{state.selectedMovieRate.title}</h2>
-        <p>{state.selectedMovieRate.overview}</p>
-      </div>
-      <div>
-        <RatingForm />
+      <div className="unrated-focus">
+        <img src={state.selectedMovieRate.poster_url} alt={state.selectedMovieRate.title} className='unrated-poster-focus'/>
+        <div className="unrated-details">
+          <h2 className='unrated-title'>{state.selectedMovieRate.title}</h2>
+          <p className='unrated-overview'>{state.selectedMovieRate.overview}</p>
+          <RatingForm />
+        </div>
       </div>
     </React.Fragment>
   );
