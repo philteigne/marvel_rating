@@ -99,6 +99,12 @@ const useApplicationData = () => {
 
   // HomePage Carousel
   useEffect(() => {
+    
+    // Don't fire if no user is logged in
+    if (!state.authToken) {
+      return;
+    }
+
     fetch(`${API_CALL_URL}top`, {
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
@@ -112,7 +118,12 @@ const useApplicationData = () => {
   
   // GET unratedMoviesList
   useEffect(() => {
-    console.log("re-fetching ", )
+
+    // Don't fire if no user is logged in
+    if (!state.authToken) {
+      return;
+    }
+    
     if (state.rateMovie.title) {
       return
     }
@@ -130,6 +141,12 @@ const useApplicationData = () => {
 
   // GET categoriesList
   useEffect(() => {
+
+    // Don't fire if no user is logged in
+    if (!state.authToken) {
+      return;
+    }
+
     fetch(`${API_CALL_URL}categories`, {
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
@@ -142,6 +159,12 @@ const useApplicationData = () => {
   
   // GET rankedMoviesList
   useEffect(() => {
+
+    // Don't fire if no user is logged in
+    if (!state.authToken) {
+      return;
+    }
+
     let apiString = ""
     if (state.selectedCategory) {
       apiString = `?category_name=${state.selectedCategory}`
@@ -161,6 +184,12 @@ const useApplicationData = () => {
 
   // POST rateMovie
   useEffect(() => {
+
+    // Don't fire if no user is logged in
+    if (!state.authToken) {
+      return;
+    }
+    
     if (state.rateMovie.movieID) {
       fetch(`${API_CALL_URL}ratings`, {
         method: 'POST',
