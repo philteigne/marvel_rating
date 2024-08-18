@@ -21,7 +21,6 @@ const Login = () => {
       })
     })
     .then(response => {
-      console.log(response.headers)
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
       }
@@ -29,8 +28,7 @@ const Login = () => {
     })
     .then(data => {
       console.log('Success:', data);
-      // You can now access cookies via document.cookie if they are set by the server
-      console.log('Cookies:', document.cookie);
+      sessionStorage.setItem('jwtToken', data.access_token);
     })
     .catch(error => {
       console.error('Error:', error);
