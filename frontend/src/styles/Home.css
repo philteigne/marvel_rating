@@ -28,7 +28,9 @@
   min-height: 350px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 
-  margin-right: 50px
+  margin-right: 50px;
+
+  border-radius: 1vw;
 }
 
 .movie-display {

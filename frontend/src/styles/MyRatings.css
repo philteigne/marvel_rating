@@ -28,6 +28,7 @@
 
   margin-bottom: 50px;
   width: 96%;
+  padding-left: 20px;
   margin-left: 2%;
   margin-bottom: 3%;
   max-height: 100%;
@@ -38,6 +39,8 @@
   height: 250px;
   margin: 10px;
   margin-left: auto;
+  border-radius: 1vw;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .unrated-focus {
@@ -64,14 +67,4 @@
   margin: 5px;
 }
 
-.rating-form {
-  display: flex;
-  flex-wrap: wrap;
-  width: 400px;
-}
-
-.rating-summary {
-  display: flex;
-
-}
 

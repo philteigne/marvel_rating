@@ -67,6 +67,7 @@
 
 .movie-ranking-poster {
   height: 190px;
+  border-radius: 1vw;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
