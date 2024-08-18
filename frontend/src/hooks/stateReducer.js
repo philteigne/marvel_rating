@@ -6,7 +6,8 @@ const REACT_APP_X_API_KEY = process.env.REACT_APP_X_API_KEY
 
 // Basic App State
 const INITIAL_STATE = {
-  userID: 3,
+  // const token = sessionStorage.getItem('jwtToken');
+  authToken: sessionStorage.getItem('jwtToken') || null,
 
   // App State
   appView: "Home", // Home, Rankings, MyRatings, User
@@ -33,6 +34,7 @@ export const ACTIONS = {
   SET_RATE_MOVIE: "SET_RATE_MOVIE",
   SET_RANKED_MOVIES_LIST: "SET_RANKED_MOVIES_LIST",
   SET_SELECTED_CATEGORY: "SET_SELECTED_CATEGORY",
+  CLEAR_SELECTED_MOVIE_RATE: "CLEAR_SELECTED_MOVIE_RATE"
 }
 
 export function reducer(state, action) {
@@ -65,7 +67,8 @@ export function reducer(state, action) {
     case ACTIONS.SET_RATE_MOVIE:
       return {
         ...state,
-        rateMovie: action.payload
+        rateMovie: action.payload,
+        selectedMovieRate: {},
       }
     case ACTIONS.SET_RANKED_MOVIES_LIST:
       return {
@@ -76,6 +79,11 @@ export function reducer(state, action) {
       return {
         ...state,
         selectedCategory: action.payload
+      }
+    case ACTIONS.CLEAR_SELECTED_MOVIE_RATE:
+      return {
+        ...state,
+        selectedMovieRate: {}
       }
       
     default:
@@ -93,9 +101,8 @@ const useApplicationData = () => {
   useEffect(() => {
     fetch(`${API_CALL_URL}top`, {
       headers: {
-        // 'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`
+        'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
         'Content-Type': 'application/json',
-        "x-api-key": REACT_APP_X_API_KEY 
       }
     })
       .then((res) => res.json())
@@ -105,22 +112,28 @@ const useApplicationData = () => {
   
   // GET unratedMoviesList
   useEffect(() => {
-    fetch(`${API_CALL_URL}movies/no-ratings?user_id=${state.userID}`, {
+    console.log("re-fetching ", )
+    if (state.rateMovie.title) {
+      return
+    }
+
+    console.log("state.rateMove", state.rateMove)
+    fetch(`${API_CALL_URL}movies/no-ratings`, {
       headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
         'Content-Type': 'application/json',
-        "x-api-key": REACT_APP_X_API_KEY
       }
     })
     .then((res) => res.json())
     .then((data) => dispatch({ type: ACTIONS.SET_UNRATED_MOVIES, payload: data}))
-  }, [state.userID])
+  }, [state.authToken, state.rateMovie])
 
   // GET categoriesList
   useEffect(() => {
     fetch(`${API_CALL_URL}categories`, {
       headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
         'Content-Type': 'application/json',
-        "x-api-key": REACT_APP_X_API_KEY
       }
     })
     .then((res) => res.json())
@@ -136,8 +149,8 @@ const useApplicationData = () => {
 
     fetch(`${API_CALL_URL}sorted_movies${apiString}`, {
       headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
         'Content-Type': 'application/json',
-        "x-api-key": REACT_APP_X_API_KEY
       }
     })
     .then((res) => res.json())
@@ -152,27 +165,36 @@ const useApplicationData = () => {
       fetch(`${API_CALL_URL}ratings`, {
         method: 'POST',
         headers: {
+          'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
           'Content-Type': 'application/json',
-          "x-api-key": REACT_APP_X_API_KEY
         },
         body: JSON.stringify(state.rateMovie)
       })
       .then(res => console.log(res))
-      .then(() => state.rateMovie = {})
+      .then(() => dispatch({type: ACTIONS.SET_RATE_MOVIE, payload: {}}))
       .catch(err => console.log(err))
     }
 
   }, [state.rateMovie]) 
 
-  // AI CHATBOT
-  // useEffect(() => {
-  //   if (state.chatQuery) {
-  //     handleAIChatRequest(state.chatQuery.message, state.chatSettings.chatVoice);
-  //   }
-  // }, [state.chatQuery, handleAIChatRequest]);
+  // POST Signup
+  useEffect(() => {
+    if (state.rateMovie.movieID) {
+      fetch(`${API_CALL_URL}register`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(state.rateMovie)
+      })
+      .then(res => console.log(res))
+      .then(() => dispatch({type: ACTIONS.SET_RATE_MOVIE, payload: {}}))
+      .catch(err => console.log(err))
+    }
 
+  }, [state.rateMovie])
 
-  // calling useApplicationData function return these functions that changes states
   return {
     state,
     dispatch
