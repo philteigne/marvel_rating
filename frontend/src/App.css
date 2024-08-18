@@ -60,7 +60,6 @@ h1 {
   font-family: 'DMSerifDisplay', serif;
   font-size: 36pt;
 
-  margin: 20px;
   text-align: center;
 }
 
@@ -102,10 +101,6 @@ h3 {
 .top-right {
 	bottom: 40%;
 	left: 70%;
-}
-
-.content {
-	z-index: 2;
 }
 
 .logo-text {
