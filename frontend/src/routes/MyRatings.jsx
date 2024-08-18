@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import MovieRate from "../components/MovieRate";
+import RatingModal from "../components/RatingModal";
 import { applicationContext } from "../hooks/applicationContext";
 
 import '../styles/MyRatings.css'
@@ -9,7 +9,6 @@ import '../styles/MyRatings.css'
 const MyRatings = () => {
 
   const { state, dispatch } = useContext(applicationContext);
-  console.log("MyRatings", state)
 
   return(
     <React.Fragment>
@@ -28,7 +27,7 @@ const MyRatings = () => {
         </ul>
       </div>
 
-      {/* {state.selectedMovieRate.title && <MovieRate />} */}
+      {state.selectedMovieRate.title && <RatingModal />}
 
     </React.Fragment>
   );
