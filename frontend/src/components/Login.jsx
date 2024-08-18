@@ -29,6 +29,7 @@ const Login = () => {
     .then(data => {
       console.log('Success:', data);
       sessionStorage.setItem('jwtToken', data.access_token);
+      window.location.reload()
     })
     .catch(error => {
       console.error('Error:', error);
