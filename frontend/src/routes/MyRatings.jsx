@@ -3,9 +3,6 @@ import { useContext } from "react";
 import RatingModal from "../components/RatingModal";
 import { applicationContext } from "../hooks/applicationContext";
 
-import '../styles/MyRatings.css'
-
-
 const MyRatings = () => {
 
   const { state, dispatch } = useContext(applicationContext);
@@ -14,6 +11,17 @@ const MyRatings = () => {
     <React.Fragment>
       <div className="unrated-container">
         <h1>Unrated</h1>
+        <ul className='category-list'>
+          {state.myRatingsCategoriesList.length > 0 &&
+            state.myRatingsCategoriesList.map((category, index) => {
+              return(
+                <li key={index} onClick={() => dispatch({ type: "SET_MYRATINGS_SELECTED_CATEGORY", payload: category})} className='category-item'>
+                  {category}
+                </li>
+              )
+            })
+          }
+        </ul>
         <ul className="unrated-list">
           {state.unratedMoviesList.length > 0 &&
             state.unratedMoviesList.map((movie) => {
