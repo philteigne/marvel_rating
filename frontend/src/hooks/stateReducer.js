@@ -1,7 +1,6 @@
 import { useReducer, useEffect } from 'react';
 
 export const API_CALL_URL = "https://ratings.svidnet.com/api/"
-const REACT_APP_X_API_KEY = process.env.REACT_APP_X_API_KEY
 
 
 // Basic App State
@@ -22,6 +21,12 @@ const INITIAL_STATE = {
   selectedMovieRate: {},
   rateMovie: {},
   categoriesList: [],
+  myRatingsCategoriesList: ["unrated", "rated", "all"],
+  selectedRatingType: "unrated",
+
+  // Login Signup
+  isUser: true,
+
 }
 
 // Dispatch Actions
@@ -34,7 +39,9 @@ export const ACTIONS = {
   SET_RATE_MOVIE: "SET_RATE_MOVIE",
   SET_RANKED_MOVIES_LIST: "SET_RANKED_MOVIES_LIST",
   SET_SELECTED_CATEGORY: "SET_SELECTED_CATEGORY",
-  CLEAR_SELECTED_MOVIE_RATE: "CLEAR_SELECTED_MOVIE_RATE"
+  SET_MYRATINGS_SELECTED_CATEGORY: "SET_MYRATINGS_SELECTED_CATEGORY",
+  SET_IS_USER: "SET_IS_USER",
+  CLEAR_SELECTED_MOVIE_RATE: "CLEAR_SELECTED_MOVIE_RATE",
 }
 
 export function reducer(state, action) {
@@ -80,10 +87,20 @@ export function reducer(state, action) {
         ...state,
         selectedCategory: action.payload
       }
+    case ACTIONS.SET_MYRATINGS_SELECTED_CATEGORY:
+      return {
+        ...state,
+        selectedRatingType: action.payload
+      }
     case ACTIONS.CLEAR_SELECTED_MOVIE_RATE:
       return {
         ...state,
         selectedMovieRate: {}
+      }
+    case ACTIONS.SET_IS_USER:
+      return {
+        ...state,
+        isUser: action.payload,
       }
       
     default:
@@ -128,8 +145,12 @@ const useApplicationData = () => {
       return
     }
 
-    console.log("state.rateMove", state.rateMove)
-    fetch(`${API_CALL_URL}movies/no-ratings`, {
+    let apiString = ""
+    if (state.selectedRatingType) {
+      apiString = `?rating_type=${state.selectedRatingType}`
+    }
+
+    fetch(`${API_CALL_URL}movies/my-ratings${apiString}`, {
       headers: {
         'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
         'Content-Type': 'application/json',
@@ -137,7 +158,7 @@ const useApplicationData = () => {
     })
     .then((res) => res.json())
     .then((data) => dispatch({ type: ACTIONS.SET_UNRATED_MOVIES, payload: data}))
-  }, [state.authToken, state.rateMovie])
+  }, [state.authToken, state.rateMovie, state.selectedRatingType])
 
   // GET categoriesList
   useEffect(() => {
@@ -189,27 +210,9 @@ const useApplicationData = () => {
     if (!state.authToken) {
       return;
     }
-    
+
     if (state.rateMovie.movieID) {
       fetch(`${API_CALL_URL}ratings`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(state.rateMovie)
-      })
-      .then(res => console.log(res))
-      .then(() => dispatch({type: ACTIONS.SET_RATE_MOVIE, payload: {}}))
-      .catch(err => console.log(err))
-    }
-
-  }, [state.rateMovie]) 
-
-  // POST Signup
-  useEffect(() => {
-    if (state.rateMovie.movieID) {
-      fetch(`${API_CALL_URL}register`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${sessionStorage.getItem('jwtToken')}`,
