@@ -283,3 +283,31 @@ nav {
 	margin-right: calc((0.675*21vh));
 	z-index: 1;
 }
+
+
+/* My Ratings */
+
+.unrated-container {
+	display: flex;
+	flex-direction: column;
+	margin: 2.5vh 1.8vw;
+
+	max-height: 100vh;
+}
+
+.unrated-list {
+	display: flex;
+	flex-wrap: wrap;
+	overflow: scroll;
+}
+
+.unrated-item {
+	display: flex;
+	justify-content: center;
+	width: calc(96.4vw/3);
+	margin: 0.5vh 0;
+}
+
+.unrated-poster {
+	height: 21vh;
+}
