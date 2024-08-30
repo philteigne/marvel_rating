@@ -21,8 +21,8 @@ const INITIAL_STATE = {
   selectedMovieRate: {},
   rateMovie: {},
   categoriesList: [],
-  myRatingsCategoriesList: ["unrated", "rated", "all"],
-  selectedRatingType: "unrated",
+  myRatingsCategoriesList: ["Unrated", "Rated", "All"],
+  selectedRatingType: "Unrated",
 
   // Login Signup
   isUser: true,
