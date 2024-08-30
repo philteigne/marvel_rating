@@ -1,5 +1,4 @@
 import '../App.css'
-import '../styles/Rankings.css'
 
 import React from "react";
 import { useContext } from "react";
