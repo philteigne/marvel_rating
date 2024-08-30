@@ -77,11 +77,11 @@ const RatingModal = () => {
             <div className="modal-rating-input-container">
               {state.categoriesList.map((category) => {
                 // if movie has rating for this category, set the value of the input to match the rating
-                let inputValue = 0;
+                let defaultInputValue = 0;
                 if (state.selectedMovieRate.ratings.length > 0) {
                   for(let item of state.selectedMovieRate.ratings) {
                     if (item.category_id === category.id) {
-                      inputValue = item.rating;
+                      defaultInputValue = item.rating;
                       break;
                     }
                   }
@@ -90,15 +90,19 @@ const RatingModal = () => {
                 return (
                   <div className="modal-rating-input">
                     <label key={category.id} className="modal-rating-label">{category.name}</label>
-                    <input type="number" min="1" max="10" step="1" defaultValue={inputValue} onChange={(e) => { 
-                      setMovieRating({
-                        ...movieRating,
-                        [category.id]: {
-                          id: category.id,
-                          rating: e.target.value
-                        }
-                      })
-                    }}
+                    <input type="number" min="1" max="10" step="1" defaultValue={defaultInputValue}
+                      onChange={(e) => { 
+                        setMovieRating({
+                          ...movieRating,
+                          [category.id]: {
+                            id: category.id,
+                            rating: e.target.value
+                          }
+                        })
+                      }}
+                      onFocus={(e) => {
+                        e.target.value = ""
+                      }}
                     className="modal-rating-input-number"></input>
                   </div>
                 )
