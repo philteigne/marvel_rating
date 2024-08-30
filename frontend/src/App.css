@@ -135,7 +135,9 @@ nav {
 	left: 0;
 	width: 100%;
 	color: black;
+	background-color: white;
 	box-shadow: 0px 0px 10px #000;
+	z-index: 2;
 }
 
 .nav-list {
@@ -224,5 +226,60 @@ nav {
 
 
 /* Rankings */
+/* Dropdown categories */
+.ranking-container {
+	display: flex;
+	flex-direction: column;
+	margin: 2.5vh 1.8vw;
 
+	max-height: 100vh;
+}
 
+.category-list {
+	display: flex;
+}
+
+.category-item {
+	padding: 5px 5px 5px 0;
+}
+
+.movie-ranking-list {
+	display: flex;
+	flex-wrap: wrap;
+
+	overflow: scroll;
+}
+
+.movie-ranking-item {
+	display: flex;
+	flex-direction: column;
+	width: 47vw;
+	overflow: hidden;
+	align-items: center;
+	margin-top: 2.6vh;
+}
+
+.movie-ranking-poster {
+	height: 21vh;
+	margin-top: calc(3.2vh * -0.5)
+}
+
+.movie-ranking-title {
+	width: calc(0.675*21vh);
+
+	font-size: 12pt;
+}
+
+.movie-ranking {
+	background-color: #175676;
+	color: white;
+	width: 3.2vh;
+	height: 3.2vh;
+	line-height: 3.2vh;
+	text-align: center;
+	align-items: center;
+	border-radius: 50%;
+
+	margin-right: calc((0.675*21vh));
+	z-index: 1;
+}
