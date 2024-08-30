@@ -1,10 +1,10 @@
 import React from "react";
-import Login from "../components/Login";
+import LoginSignUp from "../components/LoginSignUp";
 
 const User = () => {
   return(
     <React.Fragment>
-      <Login />
+      <LoginSignUp />
     </React.Fragment>
   )
 }
