@@ -3,8 +3,6 @@ import { useContext, useState, useEffect } from "react";
 
 import { applicationContext } from "../hooks/applicationContext";
 
-import '../styles/Modal.css'
-
 const RatingModal = () => {
 
   const { state, dispatch } = useContext(applicationContext);
@@ -35,9 +33,23 @@ const RatingModal = () => {
     dispatch({ type: "SET_RATE_MOVIE", payload: ratingSubmitObj })
   }
 
+  // Initialize movieRating based on selectedMovieRate
   useEffect(() => {
+    const initialRatings = {};
+    state.selectedMovieRate.ratings.forEach((item) => {
+      initialRatings[item.category_id] = {
+        id: item.category_id,
+        rating: item.rating,
+      };
+    });
+    setMovieRating(initialRatings);
+
+  }, [state.selectedMovieRate]);
+
+  useEffect(() => {
+    console.log("finding average")
     setRatingTotal(findRatingAverage(movieRating));
-  }, [movieRating]);
+  }, [movieRating, state.selectedMovieRate]);
 
   return(
     <div className="modal" onClick={() => {
@@ -58,10 +70,21 @@ const RatingModal = () => {
             <form onSubmit={handleSubmit} className="modal-rating-form">
               <div className="modal-rating-input-container">
                 {state.categoriesList.map((category) => {
+                  // if movie has rating for this category, set the value of the input to match the rating
+                  let inputValue = 0;
+                  if (state.selectedMovieRate.ratings.length > 0) {
+                    for(let item of state.selectedMovieRate.ratings) {
+                      if (item.category_id === category.id) {
+                        inputValue = item.rating;
+                        break;
+                      }
+                    }
+                  }
+                  
                   return (
                     <div className="modal-rating-input">
                       <label key={category.id} className="modal-rating-label">{category.name}</label>
-                      <input type="number" min="1" max="10" step="1" placeholder="0" onChange={(e) => { 
+                      <input type="number" min="1" max="10" step="1" defaultValue={inputValue} onChange={(e) => { 
                         setMovieRating({
                           ...movieRating,
                           [category.id]: {
