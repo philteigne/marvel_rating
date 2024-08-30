@@ -1,5 +1,4 @@
 import './App.css';
-import './styles/nav.css';
 
 import Home from './routes/Home';
 import Rankings from './routes/Rankings';
@@ -14,20 +13,29 @@ function App() {
   const { state, dispatch } = useApplicationData();
   console.log(state)
 
+  const logOutUser = () => {
+    sessionStorage.clear();
+    window.location.reload()
+  }
+
   return (
     <applicationContext.Provider value={{state, dispatch}}>
       <div className="App">
         <span className='background'></span>
-        <span className="dot bottom-left"></span>
-        <span className="dot top-right"></span>
         <nav>
-          <a className='logo-text'>TasteBuds</a>
-          <ul className='nav-list'>
-            <li onClick={() => dispatch({type: "SET_ROUTE", payload: "Home"})} className='nav-list-item'>Home</li>
-            <li onClick={() => dispatch({type: "SET_ROUTE", payload: "Rankings"})} className='nav-list-item'>Rankings</li>
-            <li onClick={() => dispatch({type: "SET_ROUTE", payload: "MyRatings"})} className='nav-list-item'>MyRatings</li>
-            <li onClick={() => dispatch({type: "SET_ROUTE", payload: "User"})} className='nav-list-item'>User Settings</li>
-          </ul>
+          {state.authToken &&
+            <ul className='nav-list'>
+              <li onClick={() => dispatch({type: "SET_ROUTE", payload: "Home"})} className='nav-list-item'>Home</li>
+              <li onClick={() => dispatch({type: "SET_ROUTE", payload: "Rankings"})} className='nav-list-item'>Rankings</li>
+              <li onClick={() => dispatch({type: "SET_ROUTE", payload: "MyRatings"})} className='nav-list-item'>My Ratings</li>
+              <li onClick={() => logOutUser()} className='nav-list-item nav-edge'>Log Out</li>
+            </ul>
+            }
+          {!state.authToken &&
+            <ul className='nav-list'>
+              <li onClick={() => dispatch({type: "SET_ROUTE", payload: "User"})} className='nav-list-item nav-edge'>Log In</li>
+            </ul>
+          }
         </nav>
         {state.appView === "Home" && <Home />}
         {state.appView === "Rankings" && <Rankings />}
