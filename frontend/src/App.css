@@ -111,6 +111,9 @@ input {
 	border: 1px solid;
 	font-size: 12pt;
 	box-sizing: border-box;
+	height: 25px;
+	padding: 0px 10px;
+	border-radius: 5px;
 }
 
 img {
@@ -208,10 +211,6 @@ nav {
 .login-input {
 	display: block;
 	width: 100%;
-	
-	height: 25px;
-	padding: 0px 10px;
-	border-radius: 5px;
 }
 
 /* MovieDetails */
@@ -394,7 +393,7 @@ nav {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	padding: 2vh 16.5vw;
+	padding: 2vh 12vw;
 
 	border-top: 1px solid;
 	border-bottom: 1px solid;
@@ -404,8 +403,8 @@ nav {
 	display: flex;
 	flex-direction: column;
 
-	margin: 0.5vh;
-	width: 7.8vh
+	margin: 0.2vh;
+	width: 8vh
 }
 
 .modal-rating-label {
@@ -415,6 +414,12 @@ nav {
 .modal-rating-summary {
 	display: flex;
 	justify-content: space-between;
-	padding: 0 16.5vw;
-	margin: 2vh 0 5vh 0;
+	padding: 0 12vw;
+	margin: 1vh 0 5vh 0;
+	align-items: flex-end;
+}
+
+.modal-submit-button {
+	height: 35px;
+	width: 110px;
 }

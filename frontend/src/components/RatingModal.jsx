@@ -89,7 +89,7 @@ const RatingModal = () => {
                 
                 return (
                   <div className="modal-rating-input">
-                    <label key={category.id} className="modal-rating-label">{category.name}</label>
+                    <label key={category.id} className="modal-rating-label">{category.name.toUpperCase()}</label>
                     <input type="number" min="1" max="10" step="1" defaultValue={defaultInputValue}
                       onChange={(e) => { 
                         setMovieRating({
@@ -110,7 +110,7 @@ const RatingModal = () => {
             </div>
             <div className="modal-rating-summary">
               <div className="modal-rating-input">
-                <label className="modal-rating-label">Total</label>
+                <label className="modal-rating-label">TOTAL</label>
                 <input type="number" value={ratingTotal} readonly className="modal-rating-input-number"></input>
               </div>
               <button type="submit" className="modal-submit-button" onClick={() => handleSubmit}
