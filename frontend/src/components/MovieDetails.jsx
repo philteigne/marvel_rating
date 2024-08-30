@@ -1,5 +1,4 @@
 import '../App.css'
-import '../styles/Home.css'
 
 import React from "react";
 import { useContext } from "react";
@@ -14,15 +13,15 @@ const MovieDetails = () => {
 
   return(
     <div className='movie-display'>
+      <h4 className='movie-award'>Top Rated Movie</h4>
       <img src={highestMovie.poster_url} alt={highestMovie.title} className='movie-poster'/>
       <div className='movie-description'>
         <div>
-          <h2 className='movie-award'>Top Rated Movie</h2>
-          <h3>{highestMovie.title}</h3>
+          <h2>{highestMovie.title}</h2>
           <p className='movie-overview'>{highestMovie.overview}</p>
         </div>
         <div>
-          <h3>Average Friend Rating:</h3>
+          <h2>Average Friend Rating:</h2>
           <div>
             {highestMovie.average_rating}
           </div>
