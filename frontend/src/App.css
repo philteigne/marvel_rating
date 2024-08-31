@@ -101,6 +101,11 @@ p {
 	font-weight: 400;
 }
 
+a {
+	color: #175676;
+	text-decoration: underline;
+}
+
 label {
 	font-family: 'Lato', sans-serif;
 	font-size: 12pt;
@@ -135,7 +140,7 @@ button {
 .background {
 	width: 100%;
 	height: 100%;
-	background-color: #FFF6EB;
+	background-color: white;
 	display: inline-block;
 	position: absolute;
 	z-index: -1;
@@ -188,6 +193,18 @@ nav {
 	padding: 35vw 17.5vw
 }
 
+.page-header {
+	margin-bottom: 6pt;
+}
+
+.welcome-button {
+	margin-top: 6pt;
+	align-self: flex-end;
+}
+
+.welcome-paragraph {
+	margin-bottom: 6pt;
+}
 
 /* Login */
 
@@ -206,11 +223,22 @@ nav {
 
 .login-label {
 	display: block;
+	margin-bottom: 12pt;
 }
 
 .login-input {
 	display: block;
 	width: 100%;
+	margin-top: 3pt;
+}
+
+.login-controls {
+	display: flex;
+	justify-content: space-between;
+}
+
+.login-button {
+	margin-bottom: 6pt;
 }
 
 /* MovieDetails */
