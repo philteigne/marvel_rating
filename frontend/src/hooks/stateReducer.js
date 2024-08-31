@@ -131,7 +131,7 @@ const useApplicationData = () => {
       .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_CAROUSEL, payload: data }))
       .catch(err => console.log(err.message))
-  }, [])
+  }, [state.rateMovie])
   
   // GET unratedMoviesList
   useEffect(() => {
