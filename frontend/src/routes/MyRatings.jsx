@@ -10,13 +10,13 @@ const MyRatings = () => {
   return(
     <React.Fragment>
       <div className="unrated-container">
-        <h1>My Ratings</h1>
+        <h1 className="page-header">My Ratings</h1>
         <ul className='category-list'>
           {state.myRatingsCategoriesList.length > 0 &&
             state.myRatingsCategoriesList.map((category, index) => {
               return(
                 <li key={index} onClick={() => dispatch({ type: "SET_MYRATINGS_SELECTED_CATEGORY", payload: category})} className='category-item'>
-                  <h3>{category}</h3>
+                  <h3 className={category === state.selectedRatingType ? "underline" : ""}>{category}</h3>
                 </li>
               )
             })

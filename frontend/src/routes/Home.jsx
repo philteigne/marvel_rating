@@ -11,7 +11,7 @@ const Home = () => {
   const { state, dispatch } = useContext(applicationContext);
 
   return (
-    <div>
+    <div className='home-container'>
       {state.authToken &&
         <div className='movie-showcase'>
           <h1 className='page-header'>

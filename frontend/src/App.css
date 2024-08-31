@@ -258,6 +258,11 @@ nav {
 
 /* MovieDetails */
 
+.home-container {
+	margin: 5.5vh 0;
+	height: 100vh;
+}
+
 .movie-showcase {
 	margin: 2.5vh 1.8vw;
 
@@ -368,6 +373,8 @@ nav {
 	display: flex;
 	flex-wrap: wrap;
 	overflow: scroll;
+	margin-bottom: 50px;
+	padding: 5px 0 50px 0;
 }
 
 .unrated-item {
