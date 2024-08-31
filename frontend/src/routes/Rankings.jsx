@@ -11,19 +11,19 @@ const Rankings = () => {
   return(
     <div className='ranking-container'>
       <div>
-        <h1>Rankings By Category</h1>
+        <h1 className='page-header'>Rankings By Category</h1>
         <ul className='category-list'>
           {state.categoriesList.length > 0 &&
             state.categoriesList.map((category) => {
               return(
                 <li key={category.id} onClick={() => dispatch({ type: "SET_SELECTED_CATEGORY", payload: category.name })} className='category-item'>
-                  <h3>{category.name}</h3>
+                  <h3 className={category.name === state.selectedCategory ? 'underline' : ''}>{category.name}</h3>
                 </li>
               )
             })
           }
           <li onClick={() => dispatch({ type: "SET_SELECTED_CATEGORY", payload: null })} className='category-item'>
-            <h3>Overall</h3>
+            <h3 className={!state.selectedCategory ? 'underline' : ''}>Total</h3>
           </li>
         </ul>
       </div>

@@ -22,7 +22,7 @@ const Home = () => {
       }
       {!state.authToken &&
         <div className='welcome-container'>
-          <h1 className='page-header'>
+          <h1 className='welcome-header'>
             Welcome To TasteBuds
           </h1>
           <p className='welcome-paragraph'>
