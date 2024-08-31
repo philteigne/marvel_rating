@@ -62,7 +62,9 @@ const RatingModal = () => {
             <img src={state.selectedMovieRate.poster_url} className="modal-movie-poster"/>
             <div className="modal-movie-details">
               <h3 className="modal-header">{state.selectedMovieRate.title}</h3>
-              <p className='movie-overview'>{state.selectedMovieRate.overview}</p>
+              <div className='movie-overview'>
+                <p>{state.selectedMovieRate.overview}</p>
+              </div>
               <h3 className="modal-header">Average Rating</h3>
               <p>{state.selectedMovieRate.average_rating || "No Ratings Yet"}</p>
 

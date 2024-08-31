@@ -451,6 +451,13 @@ nav {
 	margin-right: 0.5vh;
 }
 
+.movie-overview {
+	max-height: 15vh;
+	overflow: scroll;
+	padding-bottom: 6pt;
+	margin-bottom: 3pt;
+}
+
 .modal-rating-form {
 	display: flex;
 	flex-direction: column;
