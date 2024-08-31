@@ -188,8 +188,8 @@ nav {
 	text-align: center;
 	align-items: center;
 
-	padding: 2vw 0;
-	margin: 2vw 0;
+	padding: 1vh 0;
+	margin: 1vh 0;
 	border-right: 1px solid;
 }
 
@@ -205,7 +205,7 @@ nav {
 	flex-direction: column;
 	justify-content: space-around;
 	width: 65vw;
-	padding: 35vw 17.5vw
+	padding: 15.5vh 17.5vw
 }
 
 .welcome-header {
@@ -272,10 +272,8 @@ nav {
 .movie-display {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	width: 65vw;
-	align-content: center;
-	margin-left: 15vw;
+	width: 43vh;
+	margin-left: calc(50vw - ((43vh / 3)));
 }
 
 .movie-award {
@@ -284,7 +282,8 @@ nav {
 }
 
 .movie-poster {
-	width: 65vw;
+	max-height: 43vh;
+	align-self: flex-start;
 }
 
 .movie-description {
