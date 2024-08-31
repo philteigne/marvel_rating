@@ -15,11 +15,9 @@ const RatingModal = () => {
     let sum = 0;
 
     for (let key of keys) {
-      console.log("found rating value", movieObj[key].rating)
       sum += parseInt(movieObj[key].rating)
     }
 
-    console.log("sum", sum)
     return Math.round((sum / keys.length) * 100) / 100 || 0
   }
 
@@ -48,7 +46,6 @@ const RatingModal = () => {
   }, [state.selectedMovieRate]);
 
   useEffect(() => {
-    console.log("finding average")
     setRatingTotal(findRatingAverage(movieRating));
   }, [movieRating, state.selectedMovieRate]);
 

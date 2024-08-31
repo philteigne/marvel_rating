@@ -220,7 +220,6 @@ const useApplicationData = () => {
         },
         body: JSON.stringify(state.rateMovie)
       })
-      .then(res => console.log(res))
       .then(() => dispatch({type: ACTIONS.SET_RATE_MOVIE, payload: {}}))
       .catch(err => console.log(err))
     }

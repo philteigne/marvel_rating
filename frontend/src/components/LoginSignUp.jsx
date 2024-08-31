@@ -33,7 +33,6 @@ const LoginSignUp = () => {
       return response.json();
     })
     .then(data => {
-      console.log('Success:', data);
       sessionStorage.setItem('jwtToken', data.access_token);
       window.location.reload()
     })
