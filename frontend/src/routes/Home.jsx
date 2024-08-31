@@ -14,7 +14,7 @@ const Home = () => {
     <div>
       {state.authToken &&
         <div className='movie-showcase'>
-          <h1>
+          <h1 className='page-header'>
             Friends' Top Picks
           </h1>
           {state.carouselMovies.highest_rated_movie && <MovieDetails />}

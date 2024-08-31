@@ -17,8 +17,8 @@ const MovieDetails = () => {
       <img src={highestMovie.poster_url} alt={highestMovie.title} className='movie-poster'/>
       <div className='movie-description'>
         <div>
-          <h2>{highestMovie.title}</h2>
-          <p className='movie-overview'>{highestMovie.overview}</p>
+          <h2 className='movie-title'>{highestMovie.title}</h2>
+          {/* <p className='movie-overview'>{highestMovie.overview}</p> */}
         </div>
         <div>
           <h2>Average Friend Rating:</h2>

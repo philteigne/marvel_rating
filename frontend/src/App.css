@@ -146,6 +146,14 @@ button {
 	z-index: -1;
 }
 
+.page-header {
+	margin-top: 7.3vh;
+	margin-bottom: 7pt;
+	padding-bottom: 4pt;
+	border-bottom: 1px solid;
+	width: 65vw;
+}
+
 
 /* Nav */
 
@@ -243,10 +251,24 @@ nav {
 
 /* MovieDetails */
 
+.movie-showcase {
+	margin: 2.5vh 1.8vw;
+
+	max-height: 100vh;
+}
+
 .movie-display {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 65vw;
+	align-content: center;
+	margin-left: 15vw;
+}
+
+.movie-award {
+	align-self: flex-start;
+	margin: 10pt 0 8pt 0;
 }
 
 .movie-poster {
@@ -255,6 +277,10 @@ nav {
 
 .movie-description {
 	width: 65vw;
+}
+
+.movie-title {
+	margin: 6pt 0;
 }
 
 
