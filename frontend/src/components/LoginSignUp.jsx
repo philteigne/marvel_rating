@@ -63,14 +63,23 @@ const LoginSignUp = () => {
             setPassword(e.target.value)
           }}></input>
         </label>
-        <button type="submit">Submit</button>
+        <div className="login-controls">
+          {state.isUser &&
+            <div>
+              <p>Don't have an account?</p>
+              <p><a onClick={() => dispatch({type: "SET_IS_USER", payload: false})}>Sign Up</a></p>
+            </div>
+          }
+          {!state.isUser &&
+            <div>
+              <p>Have an account already?</p>
+              <p><a onClick={() => dispatch({type: "SET_IS_USER", payload: true})}>Log In</a></p>
+            </div>
+          }
+          <button type="submit" className="login-button">Submit</button>
+        </div>
       </form>
-      {state.isUser &&
-        <p>Don't have an account? <a onClick={() => dispatch({type: "SET_IS_USER", payload: false})}>Sign Up</a></p>
-      }
-      {!state.isUser &&
-        <p>Have an account already? <a onClick={() => dispatch({type: "SET_IS_USER", payload: true})}>Log In</a></p>
-      }
+      
     </div>
   )
 }
